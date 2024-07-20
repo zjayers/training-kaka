@@ -1,0 +1,25 @@
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: training-kafka-authentication-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: training-kafka-authentication-service
+  template:
+    metadata:
+      labels:
+        app: training-kafka-authentication-service
+    spec:
+      containers:
+        - name: training-kafka-authentication-service
+          image: zachayers/training-kafka-authentication-service
+          resources:
+            requests:
+              memory: '64Mi'
+              cpu: '250m'
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
