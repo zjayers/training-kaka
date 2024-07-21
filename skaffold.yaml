@@ -1,0 +1,13 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: training-kafka
+build:
+  artifacts:
+    - image: zachayers/training-kafka-authentication-service
+      context: services/authentication-service
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - infrastructure/k8s-configuration/authentication-service.yaml

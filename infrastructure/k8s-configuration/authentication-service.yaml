@@ -23,3 +23,19 @@ spec:
             limits:
               memory: '128Mi'
               cpu: '500m'
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: training-kafka-authentication-service-cluster-ip
+spec:
+  type: ClusterIP
+  selector:
+    app: training-kafka-authentication-service
+  ports:
+    - name: training-kafka-authentication-service
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
